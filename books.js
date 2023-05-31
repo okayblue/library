@@ -1,3 +1,5 @@
+const libraryContainer = document.querySelector('.libraryContainer');
+
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -13,4 +15,28 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
+    displayBooks();
+}
+
+function displayBooks() {
+    clearBooks();
+    for (let i = 0; i < myLibrary.length; i++) {
+        let card = document.createElement('div');
+        card.classList.add('bookCard');
+
+        card.textContent = `Title: ${myLibrary[i].title} 
+                            Author: ${myLibrary[i].author} 
+                            Pages: ${myLibrary[i].pages}
+                            Read: ${myLibrary[i].read}`;
+                            
+        libraryContainer.appendChild(card);
+    }
+}
+
+function clearBooks() {
+    let bookCards = document.querySelectorAll('.bookCard');
+    
+    bookCards.forEach((bookCard) => {
+        libraryContainer.removeChild(bookCard);
+    });
 }
