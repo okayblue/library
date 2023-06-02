@@ -21,6 +21,11 @@ function addBookToLibrary(title, author, pages, read) {
     displayBooks();
 }
 
+function removeBookFromLibrary(i) {
+    myLibrary.splice(i, 1);
+    displayBooks();
+}
+
 function displayBooks() {
     clearBooks();
     for (let i = 0; i < myLibrary.length; i++) {
@@ -34,7 +39,12 @@ function displayBooks() {
         card.classList.add('bookCard');
         deleteButton.classList.add(i);
         deleteButton.textContent = "Delete";
-
+        
+        deleteButton.addEventListener('click', (e) => {
+            let bookId = e.target.classList;
+            removeBookFromLibrary(bookId[0]);
+        })
+        
         titleDiv.textContent = `Title: ${myLibrary[i].title}`;
         authorDiv.textContent = `Author: ${myLibrary[i].author}`; 
         pagesDiv.textContent = `Pages: ${myLibrary[i].pages}`;
