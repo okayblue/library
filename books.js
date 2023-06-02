@@ -25,14 +25,27 @@ function displayBooks() {
     clearBooks();
     for (let i = 0; i < myLibrary.length; i++) {
         let card = document.createElement('div');
+        let titleDiv = document.createElement('div');
+        let authorDiv = document.createElement('div');
+        let pagesDiv = document.createElement('div');
+        let readDiv = document.createElement('div');
+        let deleteButton = document.createElement('button');
+        
         card.classList.add('bookCard');
+        deleteButton.classList.add(i);
+        deleteButton.textContent = "Delete";
 
-        card.textContent = `Title: ${myLibrary[i].title} 
-                            Author: ${myLibrary[i].author} 
-                            Pages: ${myLibrary[i].pages}
-                            Read: ${myLibrary[i].read}`;
+        titleDiv.textContent = `Title: ${myLibrary[i].title}`;
+        authorDiv.textContent = `Author: ${myLibrary[i].author}`; 
+        pagesDiv.textContent = `Pages: ${myLibrary[i].pages}`;
+        readDiv.textContent = `Read: ${myLibrary[i].read}`;
                             
         libraryContainer.appendChild(card);
+        card.appendChild(titleDiv);
+        card.appendChild(authorDiv);
+        card.appendChild(pagesDiv);
+        card.appendChild(readDiv);
+        card.appendChild(deleteButton);
     }
 }
 
@@ -44,8 +57,12 @@ function clearBooks() {
     });
 }
 
-addBookButton.addEventListener('click', () => {
+function toggleFormDisplay() {
     formContainer.classList.toggle('display');
+}
+
+addBookButton.addEventListener('click', () => {
+    toggleFormDisplay();
 })
 
 addForm.addEventListener('submit', (e) => {
@@ -57,4 +74,5 @@ addForm.addEventListener('submit', (e) => {
     let read = document.querySelector('input[name="read"]:checked').value;
 
     addBookToLibrary(title, author, pages, read);
+    toggleFormDisplay();
 })

@@ -17,6 +17,13 @@ html {
     padding: 10px;
     height: 200px;
     width: 200px;
+    border-radius: 10px;
+    overflow:auto; 
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
 }
 
 .formContainer {
