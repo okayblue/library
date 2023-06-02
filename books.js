@@ -13,6 +13,9 @@ function Book(title, author, pages, read) {
     this.info = function () {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
     }
+    this.readStatus = function () {
+        this.read == 'yes' ? this.read = 'no' : this.read = 'yes';
+    }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -35,7 +38,8 @@ function displayBooks() {
         let pagesDiv = document.createElement('div');
         let readDiv = document.createElement('div');
         let deleteButton = document.createElement('button');
-        
+        let readButton = document.createElement('button');
+
         card.classList.add('bookCard');
         deleteButton.classList.add(i);
         deleteButton.textContent = "Delete";
@@ -45,6 +49,14 @@ function displayBooks() {
             removeBookFromLibrary(bookId[0]);
         })
         
+        readButton.textContent = "Read?";
+        readButton.classList.add(i);
+        readButton.addEventListener('click', (e) => {
+            let bookId = e.target.classList;
+            myLibrary[bookId].readStatus();
+            displayBooks();
+        })
+
         titleDiv.textContent = `Title: ${myLibrary[i].title}`;
         authorDiv.textContent = `Author: ${myLibrary[i].author}`; 
         pagesDiv.textContent = `Pages: ${myLibrary[i].pages}`;
@@ -56,6 +68,7 @@ function displayBooks() {
         card.appendChild(pagesDiv);
         card.appendChild(readDiv);
         card.appendChild(deleteButton);
+        card.appendChild(readButton);
     }
 }
 
