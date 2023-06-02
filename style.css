@@ -1,5 +1,5 @@
 html {
-    background-color: rgb(77, 77, 77);
+    background-color: rgb(221, 221, 221);
     box-sizing:border-box;
     padding: 0;
     margin: 0;
@@ -17,4 +17,23 @@ html {
     padding: 10px;
     height: 200px;
     width: 200px;
+}
+
+.formContainer {
+    background-color: rgb(255, 255, 255);
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.addForm {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.display {
+    display:none;
 }

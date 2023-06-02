@@ -1,4 +1,8 @@
 const libraryContainer = document.querySelector('.libraryContainer');
+const addBookButton = document.querySelector('.addBook');
+const addForm = document.querySelector('.addForm');
+const formContainer = document.querySelector('.formContainer');
+
 
 let myLibrary = [];
 
@@ -35,8 +39,12 @@ function displayBooks() {
 
 function clearBooks() {
     let bookCards = document.querySelectorAll('.bookCard');
-    
+
     bookCards.forEach((bookCard) => {
         libraryContainer.removeChild(bookCard);
     });
 }
+
+addBookButton.addEventListener('click', () => {
+    formContainer.classList.toggle('display');
+})
